@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
@@ -12,6 +12,11 @@ const client = new ApolloClient({
 });
 
 function App() {
+
+  useEffect(() => {
+    document.title = "Project Manager"
+  })
+
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -29,10 +34,10 @@ function App() {
               path="/xxx/:id" 
               element={<xxx />}
             />
-            <Route 
+            {/* <Route 
               path="*"
               element={<NotFound />}
-            />
+            /> */}
           </Routes>
         </div>
       </Router>
