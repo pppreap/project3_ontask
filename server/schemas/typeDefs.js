@@ -9,13 +9,15 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    tasks: [Task]
+    projects: [Project]
   }
 
-  type Task {
+  type Project {
     _id: ID
     title: String
+    description: String
     complete: Boolean
+    user: User
   }
 
   type Auth {
@@ -23,9 +25,18 @@ const typeDefs = gql`
     user: User
   }
 
+  input projectInput {
+    _id: ID
+    title: String
+    description: String
+    complete: Boolean
+    user: User
+  }
+
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    addProject(input: projectInput): User
   }
 `;
 
