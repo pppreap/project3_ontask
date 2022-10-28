@@ -9,6 +9,13 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
+    tasks: [Task]
+  }
+
+  type Task {
+    _id: ID
+    title: String
+    complete: Boolean
   }
 
   type Auth {
