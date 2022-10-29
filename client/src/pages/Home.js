@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_PROJECTS } from '../utils/queries';
+import { QUERY_USER } from '../utils/queries';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_PROJECTS, {
+  const { loading, data } = useQuery(QUERY_USER, {
     fetchPolicy: "no-cache"
   });
 
@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <div className="card bg-white card-rounded w-50">
-      <div className="card-header bg-dark text-center">
+      <div className="card-header bg-light text-center">
         <h1>Welcome to OnTask App!</h1>
       </div>
       <div className="card-body m-5">
@@ -34,7 +34,7 @@ const Home = () => {
       <div className="card-footer text-center m-3">
         <h2>Ready to create a new project?</h2>
         <Link to="/project">
-          <button className="btn btn-lg btn-danger">Create Project!</button>
+          <button className="btn btn-lg btn-link">Login</button>
         </Link>
       </div>
     </div>
