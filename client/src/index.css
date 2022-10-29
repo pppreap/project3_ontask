@@ -10,8 +10,16 @@
     /* 1 */
     -webkit-text-size-adjust: 100%;
     /* 2 */
+    font-family: 'Courier New', Courier, monospace;
   }
   
+  .border {
+    border-style: dashed;
+  }
+
+  button:hover {
+    color: #35968f;
+  }
   /* Sections
      ========================================================================== */
   /**
@@ -20,6 +28,7 @@
   body {
     margin: 0;
     background-color: #1bbc9b;
+    color:#484848;
   }
   
   /**
@@ -1092,10 +1101,10 @@
     margin-bottom: 1rem;
   }
   
-  .card .card-header {
+ .card-header {
     padding: 0.375rem;
     background-color: #2d3e50;
-    color: #d9e9e8;
+    color: #35968f;
   }
   
   .card .card-body {
