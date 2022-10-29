@@ -10,11 +10,12 @@ const Home = () => {
   const projectList = data?.projects || [];
 
   return (
-    <div className="card bg-white card-rounded w-50">
+    
+    <div className="container-fluid bg-white card-rounded w-50 border">
       <div className="card-header bg-dark text-center">
         <h1>Welcome to OnTask App!</h1>
       </div>
-      <div className="card-body m-5">
+      <div className="card-body m-5 text-center">
         <h2>Project List</h2>
         {loading ? (
           <div>Loading...</div>
@@ -33,11 +34,11 @@ const Home = () => {
       </div>
       <div className="card-footer text-center m-3">
         <h2>Ready to create a new project?</h2>
-        <Link to="/project">
-          <button className="btn btn-lg btn-link">Login</button>
+        <Link to="/login">
+          <button className="btn btn-lg btn-warning">Login</button>
         </Link>
-        <Link to="/project">
-          <button className="btn btn-lg btn-link">Signup</button>
+        <Link to="/signup">
+          <button className="btn btn-lg btn-warning">Signup</button>
         </Link>
       </div>
     </div>
