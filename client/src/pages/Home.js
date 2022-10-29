@@ -1,16 +1,15 @@
-import { Link } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { QUERY_USER } from '../utils/queries';
+import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_USER } from "../utils/queries";
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_USER, {
-    fetchPolicy: "no-cache"
+    fetchPolicy: "no-cache",
   });
 
   const projectList = data?.projects || [];
 
   return (
-    
     <div className="container-fluid bg-white card-rounded w-50 border">
       <div className="card-header bg-dark text-center">
         <h1>Welcome to OnTask App!</h1>
@@ -24,8 +23,7 @@ const Home = () => {
             {projectList.map((project) => {
               return (
                 <li key={project._id}>
-                  <Link to={{ pathname: `/project/${project._id}` }}>
-                  </Link>
+                  <Link to={{ pathname: `/project/${project._id}` }}></Link>
                 </li>
               );
             })}
