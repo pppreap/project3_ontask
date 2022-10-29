@@ -1,7 +1,5 @@
 const { Schema } = require("mongoose");
 
-const userSchema = require("./User");
-
 const projectSchema = new Schema({
   title: {
     type: String,
@@ -14,8 +12,7 @@ const projectSchema = new Schema({
   complete: {
     type: Boolean,
     required: true,
-  },
-  user: [userSchema],
+  }
 });
 
 module.exports = projectSchema;

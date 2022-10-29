@@ -17,7 +17,6 @@ const typeDefs = gql`
     title: String
     description: String
     complete: Boolean
-    user: User
   }
 
   type Auth {
@@ -30,7 +29,6 @@ const typeDefs = gql`
     title: String
     description: String
     complete: Boolean
-    user: User
   }
 
   type Mutation {
