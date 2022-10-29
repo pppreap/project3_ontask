@@ -14,7 +14,7 @@ const client = new ApolloClient({
 function App() {
 
   useEffect(() => {
-    document.title = "Project Manager"
+    document.title = "OnTask"
   })
 
   return (
