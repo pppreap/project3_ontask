@@ -1,27 +1,71 @@
-const { xx, xx } = require('../models');
+const { AuthenticationError } = require("apollo-server-express");
+const { User, Project } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    xx: async () => {
-      return xx.find({});
-    },
-    xx: async (parent, { _id }) => {
-      const params = _id ? { _id } : {};
-      return xxx.find(params);
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await UserInputError.findOne({
+          _id: context.user._id,
+        });
+        return userData;
+      }
+      throw new AuthenticationError("Log in to see your projects");
     },
   },
   Mutation: {
-    createxx: async (parent, args) => {
-      const xx = await xx.create(args);
-      return xx;
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new AuthenticationError("Invalid email or password");
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+      if (!correctPw) {
+        throw new AuthenticationError("Invalid email or password");
+      }
+
+      const token = signToken(user);
+      return { token, user };
     },
-    createxx: async (parent, { _id, xxNum }) => {
-      const vxx = await xx.findOneAndUpdate(
-        { _id },
-        { $inc: { [`xx${xxNum}_votes`]: 1 } },
+    addUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
+      return { token, user };
+    },
+    addProject: async (parent, { input }, context) => {
+      if (context.user) {
+        const project = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { projects: input } },
+          { new: true }
+        );
+        return project;
+      }
+      throw new AuthenticationError(
+        "You need to be logged in to add a project"
+      );
+    },
+    updateProject: async (parent, { projectId, projectInput }) => {
+      const projectUpdate = await Project.findByIdAndUpdate(
+        { projectId, projectInput },
         { new: true }
       );
-      return xx;
+      return projectUpdate;
+    },
+    removeProject: async (parent, { projectId }, context) => {
+      if (context.user) {
+        const projectDelete = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { projects: projectId } },
+          { new: true }
+        );
+        return projectDelete;
+      }
+      throw new AuthenticationError(
+        "You need to be logged in to remove a project"
+      );
     },
   },
 };
