@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
-// import xxx from './pages/xxx';
+import Home from './pages/Home';
 // import xxx from './pages/xxx';
 
 
@@ -24,14 +24,14 @@ function App() {
           <Routes>
             <Route 
               path="/" 
+              element={<Home />}
+            />
+            <Route 
+              path="/project" 
               element={<xxx />}
             />
             <Route 
-              path="/xxx" 
-              element={<xxx />}
-            />
-            <Route 
-              path="/xxx/:id" 
+              path="/project/:id" 
               element={<xxx />}
             />
             {/* <Route 
