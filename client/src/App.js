@@ -20,7 +20,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-center align-center min-100-vh bg-primary">
+        <div className="flex-column justify-center align-center min-100-vh bg-white">
           <Routes>
             <Route 
               path="/" 
