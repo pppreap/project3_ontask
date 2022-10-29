@@ -11,7 +11,6 @@ export const QUERY_USER = gql`
         title
         description
         complete
-        user
       }
 
     }
