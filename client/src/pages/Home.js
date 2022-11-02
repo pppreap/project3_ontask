@@ -10,11 +10,11 @@ const Home = () => {
   const projectList = data?.projects || [];
 
   return (
-    <div className="container-fluid bg-white card-rounded w-50 border">
+    <div className="container-fluid bg-white card-rounded w-75 border">
       <div className="card-header bg-dark text-center">
         <h1>Welcome to OnTask App!</h1>
       </div>
-      <div className="card-body m-5 text-center">
+      <div className="card-body text-center">
         <h2>Project List</h2>
         {loading ? (
           <div>Loading...</div>
