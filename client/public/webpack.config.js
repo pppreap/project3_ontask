@@ -17,26 +17,26 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: "J.A.T.E."
+        title: "OnTask"
       }),
       new InjectManifest({
-        swSrc: './src-sw.js',
-        swDest: "src-sw.js"
+        swSrc: './service-worker.js',
+        swDest: "service-worker.js"
       }),
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
-        name: 'Just Another Text Editor',
-        short_name: 'JATE',
-        description: 'Just another text editor',
-        background_color: '#f5f5f5',
-        theme_color: '#225ca3',
+        name: 'On Task',
+        short_name: 'OnTask',
+        description: 'Project Manager',
+        // background_color: '#f5f5f5',
+        // theme_color: '#225ca3',
         start_url: '/',
         publicPath: '/',
         crossorigin: 'anonymous', // crossorigin can be null, anonymous or use-credentials
         icons: [
           {
-            src: path.resolve('src/images/logo.png'),
+            src: path.resolve('./logo192.png'),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons')
           }
