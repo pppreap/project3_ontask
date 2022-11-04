@@ -19,7 +19,7 @@ app.use(express.json());
 //routes
 app.use("/api/user", userRoutes);
 
-if (process.env.MONGODB_URI === "production") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
