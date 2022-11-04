@@ -1,10 +1,10 @@
-import Reac, { useState } from "react";
+// import React, { useState } from "react";
 
-const ProjectPage = () => {
-    const [project, setProject] = useState({
-        title: '',
-        description: '',
-        complete: false
-    });
-    
-}
+// const ProjectPage = () => {
+//     const [project, setProject] = useState({
+//         title: '',
+//         description: '',
+//         complete: false
+//     });
+
+// }
