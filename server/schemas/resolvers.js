@@ -6,12 +6,26 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await UserInputError.findOne({
+        const userData = await User.findOne({
           _id: context.user._id,
         });
         return userData;
       }
-      throw new AuthenticationError("Log in to see your projects");
+      throw new AuthenticationError("You need to be logged in");
+    },
+    allProjects: async (parent, args, context) => {
+      if (context.user) {
+        const projectData = await Project.find({});
+        return projectData;
+      }
+      throw new AuthenticationError("You need to be logged in");
+    },
+    oneProject: async (parent, { _id }, context) => {
+      if (context.user) {
+        const projectData = await Project.findOne({ _id });
+        return projectData;
+      }
+      throw new AuthenticationError("You need to be logged in");
     },
   },
   Mutation: {
@@ -21,7 +35,7 @@ const resolvers = {
         throw new AuthenticationError("Invalid email or password");
       }
 
-      const correctPw = await user.isCorrectPassword(password);
+      const correctPw = await User.isCorrectPassword(password);
       if (!correctPw) {
         throw new AuthenticationError("Invalid email or password");
       }
