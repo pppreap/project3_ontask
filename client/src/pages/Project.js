@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useMutation, useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import { ALL_PROJECTS, ONE_PROJECTS } from "../utils/queries";
@@ -34,3 +35,15 @@ const ProjectPage = () => {
     </>
   )
 };
+=======
+// import React, { useState } from "react";
+
+// const ProjectPage = () => {
+//     const [project, setProject] = useState({
+//         title: '',
+//         description: '',
+//         complete: false
+//     });
+
+// }
+>>>>>>> 7c2beec3035d2933d7c0b98631824e15acb969d8
