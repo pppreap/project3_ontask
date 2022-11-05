@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useMutation, useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import { ALL_PROJECTS, ONE_PROJECTS } from "../utils/queries";
@@ -19,9 +18,7 @@ const ProjectPage = () => {
     loading: oneLoading,
     data: oneData,
     error: oneError,
-  } = useQuery(ONE_PROJECTS, {
-    variables: { id: projectId },
-  });
+  } = useQuery(ONE_PROJECTS);
 
   const [addProject, { addError }] = useMutation(ADD_PROJECT)
 
@@ -35,15 +32,5 @@ const ProjectPage = () => {
     </>
   )
 };
-=======
-// import React, { useState } from "react";
 
-// const ProjectPage = () => {
-//     const [project, setProject] = useState({
-//         title: '',
-//         description: '',
-//         complete: false
-//     });
-
-// }
->>>>>>> 7c2beec3035d2933d7c0b98631824e15acb969d8
+export default ProjectPage
