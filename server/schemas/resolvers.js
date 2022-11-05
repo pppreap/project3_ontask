@@ -49,13 +49,9 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addProject: async (parent, { input }, context) => {
+    addProject: async (parent, { title, description }, context) => {
       if (context.user) {
-        const project = await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { projects: input } },
-          { new: true }
-        );
+        const project = await Project.create({ title, description })
         return project;
       }
       throw new AuthenticationError(
