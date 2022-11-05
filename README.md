@@ -13,6 +13,10 @@ install npm  i
 ## Usage
 The user is able to see all their projects, save and update their project status. 
 
+## Assets
+We were not able to deployed. This is the homepage.
+![Homepage](./client/src/components/project3.png)
+
 
 ## Contributions/Licenses/Links
 github: https://github.com/pppreap/project3_ontask
