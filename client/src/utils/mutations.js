@@ -27,8 +27,8 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_PROJECT = gql`
-  mutation addProject($input: projectInput!) {
-    addProject(input: $input) {
+  mutation addProject($title: String!, $description: String!) {
+    addProject(title: $title, description: $description) {
       _id
       title
       description

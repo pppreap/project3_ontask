@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const projectSchema = require("./Project");
+const Project = require("./Project");
 
 const userSchema = new Schema(
   {
@@ -20,7 +20,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    projects: [projectSchema],
+    projects: [Project.schema],
   },
   {
     toJSON: {

@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const projectSchema = new Schema({
   title: {
@@ -10,9 +10,10 @@ const projectSchema = new Schema({
     required: true,
   },
   complete: {
-    type: Boolean,
-    required: true,
+    type: Boolean
   }
 });
 
-module.exports = projectSchema;
+const Project = model("Project", projectSchema)
+
+module.exports = Project;
