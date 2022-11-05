@@ -11,24 +11,55 @@ const ProjectPage = () => {
     complete: false,
   });
 
-  const { allLoading, data } = useQuery(ALL_PROJECTS);
-  const projectsArray = data?.allProjects || [];
+  const [addProject, { error }] = useMutation(ADD_PROJECT)
 
-  const {
-    loading: oneLoading,
-    data: oneData,
-    error: oneError,
-  } = useQuery(ONE_PROJECTS);
-
-  const [addProject, { addError }] = useMutation(ADD_PROJECT)
-
-  if (allLoading || oneLoading) {
-    return <h2>LOADING...</h2>
+  const handleFormChange = (e) => {
+    const { name, value } = e.target
+    setProject({ ...project, [name]: value })
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const { data } = await addProject({
+        variables: { ...project },
+      })
+    } catch (err) {
+      console.error(err)
+    }
+
+    setProject({
+      title: "",
+      description: "",
+      complete: false,
+    })
+  }
+  
   return (
     <>
-    {!Auth.loggedIn()}
+       <form className="login text-center" onSubmit={handleSubmit}>
+      <h3 className="mb-5">Add New Project</h3>
+      <label className="mx-3">Title:</label>
+      <input
+      name="title"
+        type="text"
+        onChange={handleFormChange}
+        value={project.title}
+        required
+      />
+      <label className="mx-3">Description:</label>
+      <input
+      name="description"
+        type="text"
+        onChange={handleFormChange}
+        value={project.description}
+        className="mb-4"
+        required
+      />
+      <br />
+      <button type="submit" className="btn">Add</button>
+    </form>
     </>
   )
 };

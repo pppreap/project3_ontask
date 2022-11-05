@@ -46,8 +46,8 @@ const Home = () => {
             </Link>
           </>
         ) : (
-          <Link to="/addProject">
-            <button>Add Project</button>
+          <Link to="/project">
+            <button className="btn">Add Project</button>
           </Link>
         )}
       </div>
