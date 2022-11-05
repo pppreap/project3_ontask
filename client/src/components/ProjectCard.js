@@ -1,10 +1,10 @@
 // import React from "react";
 // import { useMutation, useQuery } from "@apollo/client";
 // import { UPDATE_PROJECT, REMOVE_PROJECT } from "../utils/mutations";
-// import { QUERY_USER } from "../utils/queries";
+// import { GET_ME } from "../utils/queries";
 
 // const ProjectCard = (props) => {
-//   const { loading, data } = useQuery(QUERY_USER);
+//   const { loading, data } = useQuery(GET_ME);
 //   const user = data?.me || {};
 
 //   const handleRemoveProject = async (projectId) => {
