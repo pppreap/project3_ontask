@@ -40,6 +40,8 @@ const ProjectPage = () => {
       description: "",
       complete: false,
     });
+
+    window.location.replace('/')
   };
 
   return (
@@ -55,7 +57,7 @@ const ProjectPage = () => {
           required
         />
         <label className="mx-3">Description:</label>
-        <textarea
+        <input
           name="description"
           type="text"
           onChange={handleFormChange}
