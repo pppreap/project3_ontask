@@ -65,18 +65,10 @@ const resolvers = {
       );
       return projectUpdate;
     },
-    removeProject: async (parent, { projectId }, context) => {
-      if (context.user) {
-        const projectDelete = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { projects: projectId } },
-          { new: true }
-        );
-        return projectDelete;
-      }
-      throw new AuthenticationError(
-        "You need to be logged in to remove a project"
-      );
+    removeProject: async (parent, args) => {
+      const { projectId } = args
+      const projectDelete = await Project.findByIdAndDelete(projectId)
+      return projectDelete
     },
   },
 };

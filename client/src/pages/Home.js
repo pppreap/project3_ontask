@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { GET_ME, ALL_PROJECTS } from "../utils/queries";
+import { REMOVE_PROJECT } from '../utils/mutations';
 import Auth from "../utils/auth";
 
 const Home = () => {
@@ -12,9 +13,19 @@ const Home = () => {
   const { loading: projectLoading, data: projectData } = useQuery(ALL_PROJECTS)
   const projectArr = projectData?.allProjects || [];
 
+  const [removeProject, { loading: removeLoading, data: removeData }] = useMutation(REMOVE_PROJECT)
+
   console.log(projectArr)
 
-  const projectList = projectData?.allProject || [];
+  const handleDelete = async (projectId) => {
+    try {
+      await removeProject({
+        variables: { projectId }
+      })
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   return (
     <div className="container-fluid bg-white card-rounded w-75 border">
@@ -32,9 +43,10 @@ const Home = () => {
           <ul className="square">
             {projectArr.map((project) => {
               return (
-                <div className="card mx-4">
+                <div key={project._id} className="card mx-4">
                 <h1>{project.title}</h1>
                 <p>{project.description}</p>
+                <button onClick={() => handleDelete(project._id)}>Delete</button>
                 </div>
               );
             })}
