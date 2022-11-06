@@ -14,8 +14,10 @@ install npm  i
 The user is able to see all their projects, save and update their project status. 
 
 ## Assets
-We were not able to deployed. This is the homepage.
-![Homepage](./client/src/components/project3.png)
+ This is the homepage, add project page, and logged in functionalities.
+![Homepage](./client/src/components/homepage.png)
+![Add Project](./client/src/components/addproject.png)
+![logged in page](./client/src/components/loggedin.png)
 
 
 ## Contributions/Licenses/Links
