@@ -5,6 +5,8 @@
 
 Using MERN stack, an project management tool app, On Task, is created to help users keep track of their project progress and completion. 
 
+Link to Application: (https://powerful-bayou-00605.herokuapp.com/)
+
 ## Installation
 install npm  i
 - node, express, mongoose, react, grapghql, apollo, bootstrap, jsonwebtoken
@@ -22,6 +24,7 @@ The user is able to see all their projects, save and update their project status
 
 ## Contributions/Licenses/Links
 github: https://github.com/pppreap/project3_ontask
+deployed app: https://powerful-bayou-00605.herokuapp.com/
 
 ## Licenses
 ![badge](https://img.shields.io/badge/license-MIT-brightgreen)
