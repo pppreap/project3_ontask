@@ -17,11 +17,14 @@ const Home = () => {
 
   console.log(projectArr)
 
-  const handleDelete = async (projectId) => {
+  const handleDelete = async (e, projectId) => {
+    e.preventDefault()
+    
     try {
       await removeProject({
         variables: { projectId }
       })
+      window.location.reload()
     } catch (err) {
       console.error(err)
     }
@@ -46,7 +49,7 @@ const Home = () => {
                 <div key={project._id} className="card mx-4">
                 <h1>{project.title}</h1>
                 <p>{project.description}</p>
-                <button onClick={() => handleDelete(project._id)}>Delete</button>
+                <button onClick={(e) => handleDelete(e, project._id)}>Delete</button>
                 </div>
               );
             })}
