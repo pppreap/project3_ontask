@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_ME, ALL_PROJECTS } from "../utils/queries";
@@ -6,6 +7,12 @@ import Auth from "../utils/auth";
 
 const Home = () => {
 
+  const [project, setProject] = useState({
+    title: "",
+    description: "",
+    complete: false,
+  });
+
   const { loading: meLoading, data: meData } = useQuery(GET_ME);
   // eslint-disable-next-line
   const user = meData?.me || {}
@@ -13,32 +20,15 @@ const Home = () => {
   const { loading: projectLoading, data: projectData } = useQuery(ALL_PROJECTS)
   const projectArr = projectData?.allProjects || [];
 
-  const [removeProject, { loading: removeLoading, data: removeData }] = useMutation(REMOVE_PROJECT)
-
-  console.log(projectArr)
-
-  const handleDelete = async (e, projectId) => {
-    e.preventDefault()
-    
-    try {
-      await removeProject({
-        variables: { projectId }
-      })
-      window.location.reload()
-    } catch (err) {
-      console.error(err)
-    }
-  }
-
   return (
-    <div className="container-fluid bg-white card-rounded w-75 border">
-      <div className="card-header bg-dark text-center">
+    <div className="container-fluid bg-white card-rounded w-75 border text-center">
+      <div className="card-header bg-dark">
         <h1>Welcome to OnTask App!</h1>
         {Auth.loggedIn() ? (
-          <button className="btn" onClick={Auth.logout}>Logout</button>
+          <button className="btn bg-dark logout" onClick={Auth.logout}>Logout</button>
         ) : null }
       </div>
-      <div className="card-body text-center">
+      <div className="card-body">
         <h2 className="mt-4">Project List</h2>
          {meLoading ? (
           <div>Loading...</div>
@@ -46,11 +36,13 @@ const Home = () => {
           <ul className="square">
             {projectArr.map((project) => {
               return (
-                <div key={project._id} className="card mx-4">
-                <h1>{project.title}</h1>
-                <p>{project.description}</p>
-                <button onClick={(e) => handleDelete(e, project._id)}>Delete</button>
-                </div>
+                <li className="projectList" key={project._id}>
+                  <Link to={`/project/${project._id}`}>{project.title}</Link>
+                </li>
+                // <div key={project._id} className="card mx-4 text-center">
+                // <h1>{project.title}</h1>
+                // <p>{project.description}</p>
+                // </div>
               );
             })}
           </ul>

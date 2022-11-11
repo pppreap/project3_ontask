@@ -26,20 +26,14 @@ const typeDefs = gql`
     user: User
   }
 
-  input projectInput {
-    _id: ID
-    title: String
-    description: String
-    complete: Boolean
-  }
-
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addProject(title: String!, description: String!): Project
-    updateProject(projectId: ID, input: projectInput): Project
+    updateProject(projectId: ID, title: String!, description: String!): Project
     removeProject(projectId: ID): Project
   }
 `;
 
 module.exports = typeDefs;
+
