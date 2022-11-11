@@ -4,7 +4,7 @@ import { ALL_PROJECTS, ONE_PROJECTS } from "../utils/queries";
 import { ADD_PROJECT } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-const ProjectPage = () => {
+const Project = () => {
   const [project, setProject] = useState({
     title: "",
     description: "",
@@ -21,11 +21,11 @@ const ProjectPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const token = Auth.loggedIn() ? Auth.getToken() : null
+    // const token = Auth.loggedIn() ? Auth.getToken() : null
 
-    if (!token) {
-      return false
-    }
+    // if (!token) {
+    //   return false
+    // }
 
     try {
       const { data } = await addProject({
@@ -74,4 +74,4 @@ const ProjectPage = () => {
   );
 };
 
-export default ProjectPage;
+export default Project;

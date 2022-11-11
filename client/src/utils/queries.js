@@ -27,9 +27,9 @@ export const ALL_PROJECTS = gql`
   }
 `;
 
-export const ONE_PROJECTS = gql`
-  query oneProjects {
-    oneProjects {
+export const ONE_PROJECT = gql`
+  query oneProject($id: ID!) {
+    oneProject(_id: $id) {
       _id
       title
       description
